@@ -21,12 +21,12 @@ class JellyBeanContentView extends ContentView {
         super(context, nativeWebContents, windowAndroid, attrs, defStyle);
     }
 
-    @Override
+  /*  @Override
     public boolean performAccessibilityAction(int action, Bundle arguments) {
         if (getContentViewCore().supportsAccessibilityAction(action)) {
             return getContentViewCore().performAccessibilityAction(action, arguments);
         }
 
         return super.performAccessibilityAction(action, arguments);
-    }
+    } */
 }

@@ -93,11 +93,12 @@ public class AccessibilityInjector extends WebContentsObserverAndroid {
      * @return An instance of a {@link AccessibilityInjector}.
      */
     public static AccessibilityInjector newInstance(ContentViewCore view) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+       /* if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             return new AccessibilityInjector(view);
         } else {
             return new JellyBeanAccessibilityInjector(view);
-        }
+        } */
+      return new AccessibilityInjector(view);
     }
 
     /**

@@ -50,11 +50,12 @@ public class DeviceDisplayInfo {
 
   @SuppressWarnings("deprecation")
   private int getPixelFormat() {
-      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+   /*   if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
           return getDisplay().getPixelFormat();
       }
       // JellyBean MR1 and later always uses RGBA_8888.
-      return PixelFormat.RGBA_8888;
+      return PixelFormat.RGBA_8888; */
+    return getDisplay().getPixelFormat();
   }
 
   /**

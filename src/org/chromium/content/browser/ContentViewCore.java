@@ -2605,8 +2605,8 @@ public class ContentViewCore implements MotionEventDelegate, NavigationClient {
         // Setting the maximum scroll values requires API level 15 or higher.
         final int SDK_VERSION_REQUIRED_TO_SET_SCROLL = 15;
         if (Build.VERSION.SDK_INT >= SDK_VERSION_REQUIRED_TO_SET_SCROLL) {
-            event.setMaxScrollX(maxScrollXPix);
-            event.setMaxScrollY(maxScrollYPix);
+         /*   event.setMaxScrollX(maxScrollXPix);
+            event.setMaxScrollY(maxScrollYPix); */
         }
     }
 

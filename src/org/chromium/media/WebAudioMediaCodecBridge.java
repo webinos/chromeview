@@ -6,10 +6,10 @@ package org.chromium.media;
 
 import android.content.Context;
 import android.media.AudioFormat;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
+//import android.media.MediaCodec;
+//import android.media.MediaCodec.BufferInfo;
+//import android.media.MediaExtractor;
+//import android.media.MediaFormat;
 import android.util.Log;
 
 import java.nio.ByteBuffer;
@@ -34,11 +34,11 @@ class WebAudioMediaCodecBridge {
         if (dataSize < 0 || dataSize > 0x7fffffff)
             return false;
 
-        MediaExtractor extractor = new MediaExtractor();
+     //   MediaExtractor extractor = new MediaExtractor();
 
         ParcelFileDescriptor encodedFD;
         encodedFD = ParcelFileDescriptor.adoptFd(inputFD);
-        try {
+     /*   try {
             extractor.setDataSource(encodedFD.getFileDescriptor(), 0, dataSize);
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,16 +49,16 @@ class WebAudioMediaCodecBridge {
         if (extractor.getTrackCount() <= 0) {
             encodedFD.detachFd();
             return false;
-        }
+        } 
 
         MediaFormat format = extractor.getTrackFormat(0);
 
         int channelCount = format.getInteger(MediaFormat.KEY_CHANNEL_COUNT);
         int sampleRate = format.getInteger(MediaFormat.KEY_SAMPLE_RATE);
-        String mime = format.getString(MediaFormat.KEY_MIME);
+        String mime = format.getString(MediaFormat.KEY_MIME); 
 
-        long durationMicroseconds = 0;
-        if (format.containsKey(MediaFormat.KEY_DURATION)) {
+        long durationMicroseconds = 0; */
+       /* if (format.containsKey(MediaFormat.KEY_DURATION)) {
             try {
                 durationMicroseconds = format.getLong(MediaFormat.KEY_DURATION);
             } catch (Exception e) {
@@ -72,17 +72,17 @@ class WebAudioMediaCodecBridge {
                   + " Channels: " + channelCount
                   + " Mime: " + mime
                   + " Duration: " + durationMicroseconds + " microsec");
-        }
+        } 
 
         nativeInitializeDestination(nativeMediaCodecBridge,
                                     channelCount,
                                     sampleRate,
-                                    durationMicroseconds);
+                                    durationMicroseconds); 
 
         // Create decoder
-        MediaCodec codec = MediaCodec.createDecoderByType(mime);
-        codec.configure(format, null /* surface */, null /* crypto */, 0 /* flags */);
-        codec.start();
+        MediaCodec codec = MediaCodec.createDecoderByType(mime); */
+       // codec.configure(format, null /* surface */, null /* crypto */, 0 /* flags */);
+        /*codec.start();
 
         ByteBuffer[] codecInputBuffers = codec.getInputBuffers();
         ByteBuffer[] codecOutputBuffers = codec.getOutputBuffers();
@@ -112,7 +112,7 @@ class WebAudioMediaCodecBridge {
                     }
 
                     codec.queueInputBuffer(inputBufIndex,
-                                           0, /* offset */
+                                           0, // offset 
                                            sampleSize,
                                            presentationTimeMicroSec,
                                            sawInputEOS ? MediaCodec.BUFFER_FLAG_END_OF_STREAM : 0);
@@ -135,7 +135,7 @@ class WebAudioMediaCodecBridge {
                 }
 
                 buf.clear();
-                codec.releaseOutputBuffer(outputBufIndex, false /* render */);
+                codec.releaseOutputBuffer(outputBufIndex, false ); // render
 
                 if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
                     sawOutputEOS = true;
@@ -149,7 +149,7 @@ class WebAudioMediaCodecBridge {
 
         codec.stop();
         codec.release();
-        codec = null;
+        codec = null; */
 
         return true;
     }
