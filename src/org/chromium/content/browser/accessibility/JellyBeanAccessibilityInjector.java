@@ -42,7 +42,7 @@ class JellyBeanAccessibilityInjector extends AccessibilityInjector {
 
     @Override
     public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
-        info.setMovementGranularities(AccessibilityNodeInfo.MOVEMENT_GRANULARITY_CHARACTER |
+      /*  info.setMovementGranularities(AccessibilityNodeInfo.MOVEMENT_GRANULARITY_CHARACTER |
                 AccessibilityNodeInfo.MOVEMENT_GRANULARITY_WORD |
                 AccessibilityNodeInfo.MOVEMENT_GRANULARITY_LINE |
                 AccessibilityNodeInfo.MOVEMENT_GRANULARITY_PARAGRAPH |
@@ -52,18 +52,18 @@ class JellyBeanAccessibilityInjector extends AccessibilityInjector {
         info.addAction(AccessibilityNodeInfo.ACTION_NEXT_HTML_ELEMENT);
         info.addAction(AccessibilityNodeInfo.ACTION_PREVIOUS_HTML_ELEMENT);
         info.addAction(AccessibilityNodeInfo.ACTION_CLICK);
-        info.setClickable(true);
+        info.setClickable(true); */
     }
 
     @Override
     public boolean supportsAccessibilityAction(int action) {
-        if (action == AccessibilityNodeInfo.ACTION_NEXT_AT_MOVEMENT_GRANULARITY ||
+      /*  if (action == AccessibilityNodeInfo.ACTION_NEXT_AT_MOVEMENT_GRANULARITY ||
                 action == AccessibilityNodeInfo.ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY ||
                 action == AccessibilityNodeInfo.ACTION_NEXT_HTML_ELEMENT ||
                 action == AccessibilityNodeInfo.ACTION_PREVIOUS_HTML_ELEMENT ||
                 action == AccessibilityNodeInfo.ACTION_CLICK) {
             return true;
-        }
+        } */
 
         return false;
     }
@@ -123,7 +123,7 @@ class JellyBeanAccessibilityInjector extends AccessibilityInjector {
             }
         }
 
-        try {
+      /*  try {
             mAccessibilityJSONObject.accumulate("action", action);
             if (arguments != null) {
                 if (action == AccessibilityNodeInfo.ACTION_NEXT_AT_MOVEMENT_GRANULARITY ||
@@ -140,7 +140,7 @@ class JellyBeanAccessibilityInjector extends AccessibilityInjector {
             }
         } catch (JSONException ex) {
             return false;
-        }
+        } */
 
         final String jsonString = mAccessibilityJSONObject.toString();
         final String jsCode = String.format(ACCESSIBILITY_ANDROIDVOX_TEMPLATE, jsonString);

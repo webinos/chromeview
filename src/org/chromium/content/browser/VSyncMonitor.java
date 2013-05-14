@@ -7,7 +7,7 @@ package org.chromium.content.browser;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
-import android.view.Choreographer;
+//import android.view.Choreographer;
 import android.view.WindowManager;
 
 import org.chromium.content.common.TraceEvent;
@@ -50,8 +50,8 @@ public class VSyncMonitor {
     private static final int MAX_VSYNC_COUNT = 5;
 
     // Choreographer is used to detect vsync on >= JB.
-    private final Choreographer mChoreographer;
-    private final Choreographer.FrameCallback mVSyncFrameCallback;
+   // private final Choreographer mChoreographer;
+    //private final Choreographer.FrameCallback mVSyncFrameCallback;
 
     // On ICS we just post a task through the handler (http://crbug.com/156397)
     private final Handler mHandler;
@@ -71,7 +71,7 @@ public class VSyncMonitor {
         mRefreshPeriodNano = (long) (NANOSECONDS_PER_SECOND / refreshRate);
         mTriggerNextVSyncCount = 0;
 
-        if (enableJBVSync && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+       /* if (enableJBVSync && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             // Use Choreographer on JB+ to get notified of vsync.
             mChoreographer = Choreographer.getInstance();
             mVSyncFrameCallback = new Choreographer.FrameCallback() {
@@ -83,10 +83,10 @@ public class VSyncMonitor {
             };
             mHandler = null;
             mVSyncRunnableCallback = null;
-        } else {
+        } else */ {
             // On ICS we just hope that running tasks is relatively predictable.
-            mChoreographer = null;
-            mVSyncFrameCallback = null;
+       //     mChoreographer = null;
+       //    mVSyncFrameCallback = null;
             mHandler = new Handler();
             mVSyncRunnableCallback = new Runnable() {
                 @Override
@@ -111,7 +111,8 @@ public class VSyncMonitor {
      * Determine whether a true vsync signal is available on this platform.
      */
     public boolean isVSyncSignalAvailable() {
-        return mChoreographer != null;
+       // return mChoreographer != null;
+      return false;
     }
 
     /**
@@ -170,7 +171,7 @@ public class VSyncMonitor {
         if (mHaveRequestInFlight) return;
         mHaveRequestInFlight = true;
         if (isVSyncSignalAvailable()) {
-            mChoreographer.postFrameCallback(mVSyncFrameCallback);
+           // mChoreographer.postFrameCallback(mVSyncFrameCallback);
         } else {
             postRunnableCallback();
         }

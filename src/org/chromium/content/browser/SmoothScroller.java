@@ -4,8 +4,8 @@
 
 package org.chromium.content.browser;
 
-import android.animation.TimeAnimator;
-import android.animation.TimeAnimator.TimeListener;
+//import android.animation.TimeAnimator;
+//import android.animation.TimeAnimator.TimeListener;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,7 +28,7 @@ public class SmoothScroller {
 
     private final Handler mHandler = new Handler(Looper.getMainLooper());
 
-    private TimeAnimator mTimeAnimator;
+    //private TimeAnimator mTimeAnimator;
 
     private int mNativePtr;
     private long mDownTime;
@@ -55,8 +55,10 @@ public class SmoothScroller {
         assert mNativePtr == 0;
         mNativePtr = nativePtr;
 
-        Runnable runnable = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) ?
-            createJBRunnable() : createPreJBRunnable();
+     /*   Runnable runnable = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) ?
+            createJBRunnable() : createPreJBRunnable(); */
+        Runnable runnable = createPreJBRunnable();
+        
         mHandler.post(runnable);
     }
 
@@ -103,7 +105,7 @@ public class SmoothScroller {
         return new Runnable() {
             @Override
             public void run() {
-                mTimeAnimator = new TimeAnimator();
+              /*  mTimeAnimator = new TimeAnimator();
                 mTimeAnimator.setTimeListener(new TimeListener() {
                     @Override
                     public void onTimeUpdate(TimeAnimator animation, long totalTime,
@@ -113,7 +115,7 @@ public class SmoothScroller {
                         }
                     }
                 });
-                mTimeAnimator.start();
+                mTimeAnimator.start(); */
             }
         };
     }

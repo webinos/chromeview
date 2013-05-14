@@ -84,12 +84,13 @@ public class ContentView extends FrameLayout
      */
     public static ContentView newInstance(Context context, int nativeWebContents,
             WindowAndroid windowAndroid, AttributeSet attrs, int defStyle) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+       /* if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             return new ContentView(context, nativeWebContents, windowAndroid, attrs, defStyle);
         } else {
             return new JellyBeanContentView(context, nativeWebContents, windowAndroid, attrs,
                     defStyle);
-        }
+        } */
+      return new ContentView(context, nativeWebContents, windowAndroid, attrs, defStyle);
     }
 
     protected ContentView(Context context, int nativeWebContents, WindowAndroid windowAndroid,
@@ -98,9 +99,10 @@ public class ContentView extends FrameLayout
 
         mContentViewCore = new ContentViewCore(context);
         mContentViewCore.initialize(this, this, nativeWebContents, windowAndroid,
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ?
+              /*  Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ?
                 ContentViewCore.INPUT_EVENTS_DELIVERED_AT_VSYNC :
-                ContentViewCore.INPUT_EVENTS_DELIVERED_IMMEDIATELY);
+                ContentViewCore.INPUT_EVENTS_DELIVERED_IMMEDIATELY); */
+            ContentViewCore.INPUT_EVENTS_DELIVERED_IMMEDIATELY);
     }
 
     // PageInfo implementation.

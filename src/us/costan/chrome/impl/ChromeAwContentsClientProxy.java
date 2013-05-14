@@ -24,7 +24,7 @@ import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 import android.webkit.GeolocationPermissions.Callback;
 import android.webkit.WebChromeClient.CustomViewCallback;
-import android.webkit.WebView.FindListener;
+//import android.webkit.WebView.FindListener;
 
 /** Glue that passes calls from the Chromium view to a WebChromeClient. */
 public class ChromeAwContentsClientProxy extends AwContentsClient {
@@ -47,7 +47,7 @@ public class ChromeAwContentsClientProxy extends AwContentsClient {
   private DownloadListener downloadListener_;
 
   /** Receives find results notifications. */
-  private FindListener findListener_;
+//  private FindListener findListener_;
 
 
   /** Resets the ChromeViewClient proxy target. */
@@ -66,9 +66,9 @@ public class ChromeAwContentsClientProxy extends AwContentsClient {
   }
 
   /** Resets the FindListener proxy target. */
-  public void setFindListener(FindListener findListener) {
+ /* public void setFindListener(FindListener findListener) {
     findListener_ = findListener;
-  }
+  } */
 
   /**
    * Creates a new proxy.
@@ -352,14 +352,14 @@ public class ChromeAwContentsClientProxy extends AwContentsClient {
   }
 
   // FindListener proxy methods.
-  @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+ // @TargetApi(Build.VERSION_CODES.JELLY_BEAN) 
   @Override
   public void onFindResultReceived(int activeMatchOrdinal,
       int numberOfMatches, boolean isDoneCounting) {
-    if (findListener_ != null) {
+    /*if (findListener_ != null) {
       findListener_.onFindResultReceived(activeMatchOrdinal, numberOfMatches,
           isDoneCounting);
-    }
+    } */  
   }
 
   // PictureListener is deprecated, so we don't proxy it.

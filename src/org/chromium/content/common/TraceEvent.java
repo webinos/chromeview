@@ -42,7 +42,7 @@ public class TraceEvent {
     private static final String PROPERTY_TRACE_TAG_ENABLEFLAGS = "debug.atrace.tags.enableflags";
 
     static {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             try {
                 Class<?> traceClass = Class.forName("android.os.Trace");
                 sTraceTagView = traceClass.getField("TRACE_TAG_VIEW").getLong(null);
@@ -73,7 +73,7 @@ public class TraceEvent {
             } catch (NoSuchFieldException e) {
                 Log.e("TraceEvent", "init", e);
             }
-        }
+        } */
     }
 
     /**

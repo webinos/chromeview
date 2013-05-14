@@ -42,7 +42,7 @@ public class DeviceUtils {
     public static boolean isTv(Context context) {
         PackageManager manager = context.getPackageManager();
         if (manager != null) {
-            return manager.hasSystemFeature(PackageManager.FEATURE_TELEVISION);
+           // return manager.hasSystemFeature(PackageManager.FEATURE_TELEVISION);
         }
         return false;
     }

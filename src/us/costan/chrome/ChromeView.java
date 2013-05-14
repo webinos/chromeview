@@ -38,7 +38,7 @@ import android.view.inputmethod.InputConnection;
 import android.webkit.DownloadListener;
 import android.webkit.ValueCallback;
 import android.webkit.WebSettings;
-import android.webkit.WebView.FindListener;
+//import android.webkit.WebView.FindListener;  
 import android.widget.FrameLayout;
 
 /** WebView-like layer. */
@@ -176,9 +176,9 @@ public class ChromeView extends FrameLayout {
    * @param findListener the new listener; replaces the old listener
    * @see android.webkit.WebView#setFindListener(FindListener)
    */
- public void setFindListener(FindListener findListener) {
+ /*public void setFindListener(FindListener findListener) {
    awContentsClient_.setFindListener(findListener);
-  }
+  } */
 
   /**
    * Gets the SSL certificate for the main top-level page or null if there is
@@ -1023,7 +1023,7 @@ public class ChromeView extends FrameLayout {
       awContents_.onInitializeAccessibilityEvent(event);
     }
   }
-  @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+ /* @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
   @Override
   public boolean performAccessibilityAction(int action, Bundle arguments) {
     if (awContents_ != null) {
@@ -1033,7 +1033,7 @@ public class ChromeView extends FrameLayout {
       }
     }
     return super.performAccessibilityAction(action, arguments);
-  }
+  } */
   @Override
   public InputConnection onCreateInputConnection(EditorInfo outAttrs) {
     if (awContents_ != null) {

@@ -94,9 +94,9 @@ public class ContentViewRenderView extends FrameLayout {
             } else {
                 // Compensate for input event lag. Input events are delivered immediately on
                 // pre-JB releases, so this adjustment is only done for later versions.
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+               /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     vsyncTimeMicros += INPUT_EVENT_LAG_FROM_VSYNC_MICROSECONDS;
-                }
+                } */
                 mVSyncListener.updateVSync(vsyncTimeMicros,
                         mVSyncMonitor.getVSyncPeriodInMicroseconds());
             }
